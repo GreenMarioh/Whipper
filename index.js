@@ -34,7 +34,7 @@ client.on('ready', ()=>{
 
     client.user.setPresence({
         activity: {
-            name: 'nothing, just waiting on the boys.',
+            name: 'with the boys.',
             type: 0,
         },
     })
