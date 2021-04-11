@@ -10,17 +10,17 @@ module.exports = {
             // message.channel.send(res.data[0].url)
             const covidEmbed = new Discord.MessageEmbed()
         .setColor('#00ff00')
-        .setTitle('SoonTM')
-        .setAuthor(`SoonTM`)
-        .setImage()
+        .setTitle('India')
+        .setAuthor(`Covid - 19 stats`)
+        .setThumbnail('https://greenmario.hep.gg/Ekosa4oqR.png')
         .setDescription(`Total number of cases: ${res.data[93].cases}`)
         .addFields(
-            {name: 'Total Cases', value: 'Soon:tm:'},
-            {name: 'Total Recovered', value: 'Sooon:tm:'},
-            {name: 'Active Cases', value: 'I SAID SOONTM'},
+            {name: 'New Cases', value: res.data[93].todayCases},
+            {name: 'Total Recovered', value: res.data[93].recovered},
+            {name: 'Recovered Today', value: res.data[93].todayRecovered},
+            {name: 'Active Cases', value: res.data[93].active},
         )
-        .setThumbnail()
-        .setFooter(`Invoked by ${message.author.username}`)
+        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL())
 
         
             message.channel.send(covidEmbed)
