@@ -92,6 +92,9 @@ client.on('ready', ()=>{
         client.guilds.cache.forEach((guild) => {message.channel.send(`**${guild.name}** has a total of **${guild.memberCount}** members`)})
     })
     
+    command(client, 'bunger', message =>{
+        message.channel.send('https://tenor.com/view/bunger-gif-20251450')
+    })
 
     command(client, 'status', message =>{
         if (message.author.id != 301773357072908290){
@@ -105,6 +108,7 @@ client.on('ready', ()=>{
                 type: 0,
             },
         })
+        message.channel.send('Bot status updated!')
     }
     
     })
