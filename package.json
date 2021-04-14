@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "discord.js": "^12.5.3",
     "https": "^1.0.0",
+    "node-fetch": "^2.6.1",
     "node.js": "0.0.1-security"
   },
   "devDependencies": {},
