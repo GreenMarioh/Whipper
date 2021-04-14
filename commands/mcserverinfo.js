@@ -17,32 +17,12 @@ module.exports = {
         }
         
 
-        // console.log(url)
-        // axios.get(`https://mcapi.us/server/status?ip=${url}&port=${port}`)
-        // .then((res) => {
-        //     var serverStatus = res.online;
-        //     console.log(serverStatus)
-            // var serverOn = 'Offline'
-            // if (serverStatus = true){
-            //     serverOn = 'Online'}
-            // message.channel.send(serverOn)
-        //     const catEmbed = new Discord.MessageEmbed()
-        // .setColor('#00ff00')
-        // .setTitle('Cat')
-        // .setAuthor(`Cats?`)
-        // .setImage(`${res.data[0].url}`)
-        // .setThumbnail()
-        // .setFooter(`Invoked by ${message.author.username}`)
-
-        
-        //     message.channel.send(catEmbed)
-        // .catch(console.error)
-        //        })
+    
 
         fetch(`https://mcapi.us/server/status?ip=${url}&port=${port}`)
   .then(res => res.json())
   .then(data => {
-    console.log(data)
+    // console.log(data)
     var serverStatus = data.online
     var serverOn = 'Offline'
     if (serverStatus != false){
@@ -53,13 +33,19 @@ module.exports = {
     var error = data.error;
     var playerObjectList = data.players.sample;
     var description = data.motd;
-    var playersList = []
+    var playersList = 'No one is playing currently'
+    
+    playersList = []
     for (var i = 0; i < playerObjectList.length; i++){
         const Players = playerObjectList[i].name
 
         playersList.push(Players)
     }
-
+    
+    if (playersList = []) {
+        playersList = 'Cannot fetch list of players: Either the server is empty or players list beyond limit.'
+    }
+    // console.log(playersList)
     const mcServer = new Discord.MessageEmbed()
         .setColor('#55FF55')
         .setTitle(`Minecraft server info for ${url}`)
