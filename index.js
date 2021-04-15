@@ -250,37 +250,38 @@ client.on('ready', ()=>{
     //     message.channel.send(userEmbed)
     // })
     
-    command(client, 'ban', message =>{
-        const {member, mentions} = message
-        if (member.hasPermission('ADMIN') || member.hasPermission('BAN_MEMBER')){
-                const target = mentions.users.first()
-                if (target){
-                    const targetMember = message.guild.members.cache.get(target.id)
-                    targetMember.ban()
-                    message.channel.send(`<@${member.id}> has been banned`)
-                } else {
-                    message.channel.send(`<@${member.id}> You did not specify someone to ban.`)
-                }
-        } else {
-            message.channel.send(`<@${member.id}> You do not have the permission to use this command.`)
-        }
-    })
+    // command(client, 'ban', message =>{
+    //     const {member, mentions} = message
+    //     if (member.hasPermission('ADMIN') || member.hasPermission('BAN_MEMBER')){
+    //             const target = mentions.users.first()
+    //             if (target){
+    //                 const targetMember = message.guild.members.cache.get(target.id)
+    //                 targetMember.ban()
+    //                 message.channel.send(`<@${member.id}> has been banned`)
+    //             } else {
+    //                 message.channel.send(`<@${member.id}> You did not specify someone to ban.`)
+    //             }
+    //     } else {
+    //         message.channel.send(`<@${member.id}> You do not have the permission to use this command.`)
+    //     }
+    // })
 
-    command(client, 'kick', message =>{
-        const {member, mentions} = message
-        if (member.hasPermission('ADMIN') || member.hasPermission('KICK_MEMBER')){
-                const target = mentions.users.first()
-                if (target){
-                    const targetMember = message.guild.members.cache.get(target.id)
-                    targetMember.ban()
-                    message.channel.send(`<@${member.id}> has been kicked`)
-                } else {
-                    message.channel.send(`<@${member.id}> You did not specify someone to kicked.`)
-                }
-        } else {
-            message.channel.send(`<@${member.id}> You do not have the permission to use this command.`)
-        }
-    })
+    
+    // command(client, 'kick', message =>{
+    //     const {member, mentions} = message
+    //     if (member.hasPermission('ADMIN') || member.hasPermission('KICK_MEMBER')){
+    //             const target = mentions.users.first()
+    //             if (target){
+    //                 const targetMember = message.guild.members.cache.get(target.id)
+    //                 targetMember.ban()
+    //                 message.channel.send(`<@${member.id}> has been kicked`)
+    //             } else {
+    //                 message.channel.send(`<@${member.id}> You did not specify someone to kicked.`)
+    //             }
+    //     } else {
+    //         message.channel.send(`<@${member.id}> You do not have the permission to use this command.`)
+    //     }
+    // })
 
     const guild = client.guilds.cache.get('826338678401925120')
     const channel = guild.channels.cache.get('826338678401925123')
@@ -389,6 +390,16 @@ client.on('message', message => {
     }
 
 })
+
+
+client.on('guildMemberAdd', member => {
+    // Send the message to a designated channel on a server:
+    const channel = member.guild.channels.cache.find(ch => ch.name == 'fortnite-best-game');
+    // Do nothing if the channel wasn't found on this server
+    if (!channel) return;
+    // Send the message, mentioning the member
+    channel.send(`Hey ${member}`);
+  });
 
 
 client.login(config.token);
