@@ -387,6 +387,38 @@ client.on('message', message => {
 
     if (message.content === '<:shut:759123030353510430>'){
         message.channel.send('<:Unshut:830511335078756372>')
+     }
+
+    //  message.channel.messages.fetch("832308513694416906")
+    //  .then(message => {
+    //      console.log(message.content)
+    //     console.log(message.activity)
+    //     })
+    //  .catch(console.error);
+     
+   
+    
+    if (message.channel.id == `832901660455206942`){
+        if (message.author.bot && message.content.includes('Only Vibes')){return}
+        else if (message.content != 'https://media.discordapp.net/attachments/238446384808722433/819929391748481034/catvibe.gif') {message.delete();
+        var guild1 = client.guilds.cache.get('338731263697616897')
+        var  channel1 = guild1.channels.cache.get('832901660455206942')
+        sendMessage(channel1, `<@${message.author.id}> Only Vibes`, 5)
+    }
+    }
+
+
+        
+
+        // console.log(message.channel.id)
+    
+
+    
+     if (message.activity!= null) 
+     {
+         if (message.activity.partyID == 'spotify:301773357072908290'){
+         message.channel.send('Nah fam I don\'t have spotify Premium')
+     }
     }
 
 })

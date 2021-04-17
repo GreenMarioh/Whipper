@@ -61,7 +61,7 @@ module.exports = {
     // message.channel.send(`Server is currently ${serverOn}. ${currentPlayers} playing out of ${maxPlayers}.`)
     
     if (error != null){
-        message.channel.send(`Error: ${error}. Server is currently ${serverOn}.`)
+        message.channel.send(`Error: **${error}**. Server may be offline or unreachable.`)
     }
 
     // message.channel.send(serverOn)
