@@ -38,52 +38,14 @@ client.on('ready', ()=>{
             type: 0,
         },
     })
-    // console.log(stratsList.bindStratsAttackers[1][0])
-
-    // command(client, ['ping', 'ding'], message =>{
-    //     message.channel.send(`Ping is **${Date.now() - message.createdTimestamp}ms**. API Latency is ***${Math.round(client.ws.ping)}ms***`)
-    // })
-
+    
     
     
 
     const guildMansion = client.guilds.cache.get('338731263697616897')
-    const channelLounge = guildMansion.channels.cache.get('796449773938933810')
     
-    // sendMessage(channelLounge, 'Send message test', 10)
-    // const t = 1
-    // while ( t > 0){
-    //     sendMessage(channelLounge, 'Pin message test', 10);
-        
-    //     t++
-    // }
-
-    // command(client, 'spam', message =>{
-    //     if (message.content.toLowerCase() === `${prefix}spam`){
-    //         message.channel.send('You didn\'t specify anything');
-    //         return;
-    //     }
-    //     var spamContent = message.content.replace(`${prefix}spam `, '') 
-        
-        // if (message.guild.id = guildMansion){
-        //     message.channel.send('Disabled in this server');
-        //     return;
-        // }
-    //     if(message.author.bot) return; 
-
-    //     else if (spamContent.includes('301773357072908290')){
-    //         message.channel.send('lmao don\'t spam GreenMario');
-    //         return;
-    //         }
-        
-        
-            
-    //         for (i =0; i < 5; i++){
-    //             message.channel.send(spamContent)
-    //         }
-       
-    // })
-
+    
+  
     command(client, 'servers', message =>{
         if (message.author.id != 301773357072908290){
             message.channel.send('You ain\'t the Bot owner fam, won\'t work for ya');
@@ -113,21 +75,7 @@ client.on('ready', ()=>{
     
     })
 
-    // command(client, 'Cheesed', message=>{ 
-    //     message.channel.send('Check DMs')
-    // })
-    // privateMessage(client, '>Cheesed', 'https://cdn.discordapp.com/emojis/755967495701004318.png?v=1')
-
-    // command(client, 'textchannel', (message) =>{
-    //     const name = message.content.replace('>textchannel ', '')
-
-    //     message.guild.channel
-    //     .create(name, {
-    //         type: 'text',
-    //     }).then((channel)=> {
-    //         console.log(channel)
-    //     })
-    // }) 
+    
 
     
 
@@ -237,54 +185,10 @@ client.on('ready', ()=>{
     })
     
     
-    // command(client, 'userinfo', message =>{
-    //     const {user} = message
-    //     const {createdAt, username} = user
-    //     const userEmbed = new Discord.MessageEmbed()
-    //     .setColor('ohs28h')
-    //     .setTitle(`Userinfo for ${username}`)
-    //     .addFields({
-    //         name: 'Created at',
-    //         value: createdAt
-    //     })
-    //     message.channel.send(userEmbed)
-    // })
-    
-    // command(client, 'ban', message =>{
-    //     const {member, mentions} = message
-    //     if (member.hasPermission('ADMIN') || member.hasPermission('BAN_MEMBER')){
-    //             const target = mentions.users.first()
-    //             if (target){
-    //                 const targetMember = message.guild.members.cache.get(target.id)
-    //                 targetMember.ban()
-    //                 message.channel.send(`<@${member.id}> has been banned`)
-    //             } else {
-    //                 message.channel.send(`<@${member.id}> You did not specify someone to ban.`)
-    //             }
-    //     } else {
-    //         message.channel.send(`<@${member.id}> You do not have the permission to use this command.`)
-    //     }
-    // })
+   
 
-    
-    // command(client, 'kick', message =>{
-    //     const {member, mentions} = message
-    //     if (member.hasPermission('ADMIN') || member.hasPermission('KICK_MEMBER')){
-    //             const target = mentions.users.first()
-    //             if (target){
-    //                 const targetMember = message.guild.members.cache.get(target.id)
-    //                 targetMember.ban()
-    //                 message.channel.send(`<@${member.id}> has been kicked`)
-    //             } else {
-    //                 message.channel.send(`<@${member.id}> You did not specify someone to kicked.`)
-    //             }
-    //     } else {
-    //         message.channel.send(`<@${member.id}> You do not have the permission to use this command.`)
-    //     }
-    // })
-
-    const guild = client.guilds.cache.get('826338678401925120')
-    const channel = guild.channels.cache.get('826338678401925123')
+    var guild = client.guilds.cache.get('826338678401925120')
+    var channel = guild.channels.cache.get('826338678401925123')
     // sendMessage(channel, 'Test', 3)
 
     // Beginning of random strats list
@@ -385,18 +289,19 @@ client.on('ready', ()=>{
 
 client.on('message', message => {
 
+    var guild = client.guilds.cache.get(message.guild.id)
+
+    const deletedEmbed = new Discord.MessageEmbed()
+        .setAuthor(`Deleted message in #${message.channel.name}`)
+        .setColor(`#1291f3`)
+        .setDescription(`${message.content}`)
+        .setThumbnail(message.author.avatarURL())
+        .setFooter(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL());
+
     if (message.content === '<:shut:759123030353510430>'){
         message.channel.send('<:Unshut:830511335078756372>')
      }
 
-    //  message.channel.messages.fetch("832308513694416906")
-    //  .then(message => {
-    //      console.log(message.content)
-    //     console.log(message.activity)
-    //     })
-    //  .catch(console.error);
-     
-   
     
     if (message.channel.id == `832901660455206942`){
         if (message.author.bot && message.content.includes('Only Vibes')){return}
@@ -406,13 +311,38 @@ client.on('message', message => {
         sendMessage(channel1, `<@${message.author.id}> Only Vibes`, 5)
     }
     }
-
-
-        
-
-        // console.log(message.channel.id)
     
 
+    
+    let slur = ['nig ', 'niggu', 'nigg', 'n1g', 'nigger', 'kneeg', 'knig ', 'negg', 'negro', 'kike', 'fag', 'faggot'];
+
+    let foundInTextSlur = false;
+    for (var i in slur) {
+    if(message.content.toLowerCase().includes(slur[i].toLowerCase())) foundInTextSlur = true;
+    }
+
+    if(foundInTextSlur) {
+    if (message.guild.id == 826338678401925120){
+        
+        
+        var channel = guild.channels.cache.get('833640023139549236')
+        sendMessage(channel, deletedEmbed, -1);
+        message.delete();
+        sendMessage(message.channel, `<@${message.author.id}> Watch your language`, 5)
+
+    }
+
+    if (message.guild.id == 338731263697616897){
+        
+        
+        var channel = guild.channels.cache.get('758000180900397174')
+        sendMessage(channel, deletedEmbed, -1);
+        message.delete();
+        sendMessage(message.channel, `<@${message.author.id}> Watch your language`, 5)
+
+    }
+    
+    }
     
      if (message.activity!= null) 
      {
@@ -433,5 +363,33 @@ client.on('guildMemberAdd', member => {
     channel.send(`Hey ${member}`);
   });
 
+client.on('messageDelete', message =>{
+
+    
+    // var guild = client.guilds.cache.get(message.guild.id)
+    
+    // const deletedEmbed = new Discord.MessageEmbed()
+    //     .setAuthor(`Deleted message in #${message.channel.name}`)
+    //     .setColor(`#1291f3`)
+    //     .setDescription(`${message.content}`)
+    //     .setThumbnail(message.author.avatarURL())
+    //     .setFooter(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL())
+
+    
+
+    // if (message.guild.id == 826338678401925120) 
+    
+    // {   
+    //    var channel = guild.channels.cache.get('833640023139549236')
+    //     sendMessage(channel, deletedEmbed, -1)
+    // }
+
+    // if (message.guild.id == 338731263697616897) 
+    // {
+    //     var channel = guild.channels.cache.get('758000180900397174')
+    //     sendMessage(channel, deletedEmbed, -1)
+    // }
+
+})
 
 client.login(config.token);
