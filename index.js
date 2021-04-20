@@ -314,7 +314,7 @@ client.on('message', message => {
     
 
     
-    let slur = ['nig ', 'niggu', 'nigg', 'n1g', 'nigger', 'kneeg', 'knig ', 'negg', 'negro', 'kike', 'fag', 'faggot'];
+    let slur = ['nig ', 'niggu', 'nigg', 'n1g', 'nigger', 'kneeg', 'knig ', 'negg', 'negro', 'kike ', 'fag ', 'faggot'];
 
     let foundInTextSlur = false;
     for (var i in slur) {
