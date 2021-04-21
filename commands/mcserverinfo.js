@@ -4,14 +4,14 @@ var https = require ('https')
 const fetch = require("node-fetch");
 
 module.exports = {
-    commands: ['mcserver', 'minecraftserver'],
+    commands: ['mcserver', 'minecraftserver', 'minecraft', 'mc'],
     expectedArgs: '[Server IP] [Port(optional)]',
     permissionerror: 'You dont have the perms',
     minArgs: 1,
     maxArgs: 2,
     callback: (message, arguments, text) => {
         var url = arguments[0]
-        var port = '22565'
+        var port = '25565'
         if (arguments[1] != undefined){
             port = arguments[1]
         }

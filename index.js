@@ -4,9 +4,10 @@ const config = require ('./config.json')
 const command = require('./command')
 const sendMessage = require ('./send-message')
 const { prefix } = require ('./config.json')
-const stratsList = require ('./script')
+
 const path = require('path')
 const fs = require('fs')
+
 
 
 client.on('ready', ()=>{
@@ -39,13 +40,7 @@ client.on('ready', ()=>{
         },
     })
     
-    
-    
-
-    const guildMansion = client.guilds.cache.get('338731263697616897')
-    
-    
-  
+   
     command(client, 'servers', message =>{
         if (message.author.id != 301773357072908290){
             message.channel.send('You ain\'t the Bot owner fam, won\'t work for ya');
@@ -185,100 +180,6 @@ client.on('ready', ()=>{
     })
     
     
-   
-
-    var guild = client.guilds.cache.get('826338678401925120')
-    var channel = guild.channels.cache.get('826338678401925123')
-    // sendMessage(channel, 'Test', 3)
-
-    // Beginning of random strats list
-
- command(client, 'strat', message =>{
-        const messageContent = message.content.replace('>strat ', '')
-        var stratDescription
-        var stratTitle
-        
-       if (messageContent.toLowerCase() === 'bind attack'){
-            var choice = Math.floor(Math.random() * stratsList.bindStratsAttackers.length)
-            stratNameBindAttack = stratsList.bindStratsAttackers[choice][0];
-            stratBindAttack = stratsList.bindStratsAttackers[choice][1];
-            
-            stratTitle = stratNameBindAttack;
-            stratDescription = stratBindAttack;
-        }
-
-        else if (messageContent.toLowerCase() === 'bind defense'){
-            var choice = Math.floor(Math.random() * stratsList.bindStratsDefenders.length)
-            stratNameBindDefense = stratsList.bindStratsDefenders[choice][0];
-            stratBindDefense = stratsList.bindStratsDefenders[choice][1];
-
-            stratTitle = stratNameBindDefense;
-            stratDescription = stratBindDefense;
-        }
-        else if (messageContent.toLowerCase() === 'haven defense'){
-            var choice = Math.floor(Math.random() * stratsList.havenStratsDefenders.length)
-            stratNameHavenDefense = stratsList.havenStratsDefenders[choice][0];
-            stratHavenDefense = stratsList.havenStratsDefenders[choice][1];
-
-            stratTitle = stratNameHavenDefense;
-            stratDescription = stratHavenDefense;
-        }
-        else if (messageContent.toLowerCase() === 'haven attack'){
-            var choice = Math.floor(Math.random() * stratsList.havenStratsAttackers.length)
-            stratNameHavenAttack = stratsList.havenStratsAttackers[choice][0];
-            stratHavenAttack = stratsList.havenStratsAttackers[choice][1];
-
-            stratTitle = stratNameHavenAttack;
-            stratDescription = stratHavenAttack;
-        }
-        else if (messageContent.toLowerCase() === 'split attack'){
-            var choice = Math.floor(Math.random() * stratsList.splitStratsAttackers.length)
-            stratNameSplitAttack = stratsList.splitStratsAttackers[choice][0];
-            stratSplitAttack = stratsList.splitStratsAttackers[choice][1];
-
-            stratTitle = stratNameSplitAttack;
-            stratDescription = stratSplitAttack;
-        }
-        else if (messageContent.toLowerCase() === 'split defense'){
-            var choice = Math.floor(Math.random() * stratsList.splitStratsDefenders.length)
-            stratNameSplitDefense = stratsList.splitStratsDefenders[choice][0];
-            stratSplitDefense = stratsList.splitStratsDefenders[choice][1];
-
-            stratTitle = stratNameSplitDefense;
-            stratDescription = stratSplitDefense;
-        }
-        else if (messageContent.toLowerCase() === 'ascent attack'){
-            var choice = Math.floor(Math.random() * stratsList.ascentStratsAttackers.length)
-            stratNameAscentAttack = stratsList.ascentStratsAttackers[choice][0];
-            stratAscentAttack = stratsList.ascentStratsAttackers[choice][1];
-
-            stratTitle = stratNameAscentAttack;
-            stratDescription = stratAscentAttack;
-        }
-        else if (messageContent.toLowerCase() === 'ascent defense'){
-            var choice = Math.floor(Math.random() * stratsList.ascentStratsDefenders.length)
-            stratNameAscentDefense = stratsList.ascentStratsDefenders[choice][0];
-            stratAscentDefense= stratsList.ascentStratsDefenders[choice][1];
-
-            stratTitle = stratNameAscentDefense;
-            stratDescription = stratAscentDefense;
-        }
-
-        else if (stratTitle === undefined || stratDescription === undefined){
-            message.channel.send(`**Usage:** \`${prefix}strat [mapName] [attack/defense]\``);
-            return;}
-
-
-            const stratEmbed = new Discord.MessageEmbed()
-                .setAuthor('Random VALORANT Strat')
-                .setColor('#FF4655')
-                .setThumbnail('https://cdn.discordapp.com/emojis/683973971984777299.png')
-                .setTitle(stratTitle)
-                .setDescription(`<@${message.author.id}> ${stratDescription}`)
-                .setFooter('Powered by valorantstratroulette.netlify.app and Captain Pre', message.author.displayAvatarURL())
-                message.channel.send(stratEmbed)
-            })    
-           // End of strats list
 
 
     })
@@ -291,12 +192,7 @@ client.on('message', message => {
 
     var guild = client.guilds.cache.get(message.guild.id)
 
-    const deletedEmbed = new Discord.MessageEmbed()
-        .setAuthor(`Deleted message in #${message.channel.name}`)
-        .setColor(`#1291f3`)
-        .setDescription(`${message.content}`)
-        .setThumbnail(message.author.avatarURL())
-        .setFooter(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL());
+    
 
     if (message.content === '<:shut:759123030353510430>'){
         message.channel.send('<:Unshut:830511335078756372>')
@@ -314,12 +210,19 @@ client.on('message', message => {
     
 
     
-    let slur = ['nig ', 'niggu', 'nigg', 'n1g', 'nigger', 'kneeg', 'knig ', 'negg', 'negro', 'kike', 'fag', 'faggot'];
+    let slur = ['nig ', 'niggu', 'nigg', 'n1g', 'nigger', 'kneeg ', 'knig ', 'negg ', 'negro ', 'kike ', 'fag ', 'faggot'];
 
     let foundInTextSlur = false;
     for (var i in slur) {
     if(message.content.toLowerCase().includes(slur[i].toLowerCase())) foundInTextSlur = true;
     }
+
+    const deletedEmbed = new Discord.MessageEmbed()
+        .setAuthor(`Deleted message in #${message.channel.name}.`)
+        .setColor(`#1291f3`)
+        .setDescription(`${message.content}`)
+        .setThumbnail(message.author.avatarURL())
+        .setFooter(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL());
 
     if(foundInTextSlur) {
     if (message.guild.id == 826338678401925120){
@@ -354,14 +257,7 @@ client.on('message', message => {
 })
 
 
-client.on('guildMemberAdd', member => {
-    // Send the message to a designated channel on a server:
-    const channel = member.guild.channels.cache.find(ch => ch.name == 'fortnite-best-game');
-    // Do nothing if the channel wasn't found on this server
-    if (!channel) return;
-    // Send the message, mentioning the member
-    channel.send(`Hey ${member}`);
-  });
+
 
 client.on('messageDelete', message =>{
 
