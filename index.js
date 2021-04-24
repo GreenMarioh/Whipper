@@ -10,7 +10,7 @@ const fs = require('fs')
 
 
 
-client.on('ready', ()=>{
+client.on('ready', async ()=>{
     console.log('Bot is online!')
 
     const baseFile = 'command-base.js'
@@ -188,7 +188,7 @@ client.on('ready', ()=>{
 
 
 
-client.on('message', message => {
+client.on('message', async message => {
 
     var guild = client.guilds.cache.get(message.guild.id)
 
@@ -210,7 +210,7 @@ client.on('message', message => {
     
 
     
-    let slur = ['nig ', 'niggu', 'nigg', 'n1g', 'nigger', 'kneeg ', 'knig ', 'negg ', 'negro ', 'kike ', 'fag ', 'faggot'];
+    let slur = ['nig ', 'niggu', 'nigg', 'n1g', 'nigger', 'kneeg', 'knig ', 'negg', 'negro', 'kike ', 'fag ', 'faggot'];
 
     let foundInTextSlur = false;
     for (var i in slur) {
