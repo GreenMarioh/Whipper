@@ -33,7 +33,8 @@ module.exports = {
     
     
     message.channel.send(ApexStats)
-    console.log(data)}
+    // console.log(data)
+  }
 })
   .catch(console.error)
 },
