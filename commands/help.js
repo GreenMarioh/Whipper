@@ -21,6 +21,8 @@ module.exports = {
        > ${prefix}**help**: HELP!
        > ${prefix}**ping**: Pong?!
        > ${prefix}**cat**: Cats?!
+       > ${prefix}**dog**: Dogs?!
+       > ${prefix}**Apex**: Apex stats
        > ${prefix}**agent**: Get suggestion to play a random VALROANT agent
        > ${prefix}**legend**: Get suggestion to play a random Apex Legend
        > ${prefix}**minecraft**: Minecraft server info for specified address
@@ -31,7 +33,7 @@ module.exports = {
        > ${prefix}**purge**: Purge messages (Mod only)
        > ${prefix}**serverinfo**: Info about current server `)
        .addField('Other features', 'Welcomer, Word filter', true)
-        .setFooter('Made by GreenMario#0001, for the Boys', message.author.avatarURL() )
+       .setFooter('Made by GreenMario#0001, for the Boys', message.author.avatarURL() )
        
         
        message.channel.send(helpEmbed)
