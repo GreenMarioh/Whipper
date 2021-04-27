@@ -23,6 +23,7 @@ module.exports = {
        > ${prefix}**cat**: Cats?!
        > ${prefix}**dog**: Dogs?!
        > ${prefix}**Apex**: Apex stats
+       > ${prefix}**csgo**: CSGO stats
        > ${prefix}**agent**: Get suggestion to play a random VALROANT agent
        > ${prefix}**legend**: Get suggestion to play a random Apex Legend
        > ${prefix}**minecraft**: Minecraft server info for specified address

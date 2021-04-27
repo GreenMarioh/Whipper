@@ -28,7 +28,6 @@ module.exports = {
         var kd = result.kd.displayValue
         var damage = result.damage.displayValue
         var hsp = result.headshotPct.displayValue
-        var roundsWon = result.roundsWon.displayValue
         var matchesPlayed = result.matchesPlayed.displayValue;
         var wins = result.wins.displayValue;
         var name = data.data.platformInfo.platformUserHandle;
@@ -44,13 +43,14 @@ module.exports = {
         .addField('Damage Done', damage, true)
         .addField('K/D', kd, true)
         .addField('Hedshots percentage', hsp, true)
-        .addField('Rounds Won', roundsWon, true)
+        
         .addField('Matches Played', matchesPlayed, true)
         .addField('Matches Won', wins, true)
         .setFooter(`Made by GreenMario#0001, API provided by tracker.gg`, message.author.displayAvatarURL())
 
         message.channel.send(csgoEmbed)
         // console.log(data.data.platformInfo.platformUserHandle)
+        // console.log(data.data.segments[0].stats)
 }
 }
 )
