@@ -255,28 +255,28 @@ client.on('message', async message => {
     }
 
     
-    var phoneReg = /^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/
-    var otherPhoneReg = /(?:^|[^0-9])(1[34578][0-9]{9})(?:$|[^0-9])/
-    var inPh = /(\+?\d[\d -]{8,12}\d)/
+    // var phoneReg = /^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/
+    // var otherPhoneReg = /(?:^|[^0-9])(1[34578][0-9]{9})(?:$|[^0-9])/
+    // var inPh = /(\+?\d[\d -]{8,12}\d)/
 
-    var containsPhoneNumber = (phoneReg.test(message.content) || otherPhoneReg.test(message.content) || inPh.test(message.content))
-    if(containsPhoneNumber && message.guild.id == 826338678401925120 ){
-        var channel = guild.channels.cache.get('833640023139549236')
-        sendMessage(channel, deletedEmbed, -1);
-        message.delete();
-        sendMessage(message.channel, `Do not post private information here.`, 5 )
-    }
+    // var containsPhoneNumber = (phoneReg.test(message.content) || otherPhoneReg.test(message.content) || inPh.test(message.content))
+    // if(containsPhoneNumber && message.guild.id == 826338678401925120 ){
+    //     var channel = guild.channels.cache.get('833640023139549236')
+    //     sendMessage(channel, deletedEmbed, -1);
+    //     message.delete();
+    //     sendMessage(message.channel, `Do not post private information here.`, 5 )
+    // }
 
-    if(containsPhoneNumber && message.guild.id == 338731263697616897 ){
-        var channel = guild.channels.cache.get('758000180900397174')
-        sendMessage(channel, deletedEmbed, -1);
-        message.delete();
-        sendMessage(message.channel, `Do not post private information here.`, 5 )
-    }
+    // if(containsPhoneNumber && message.guild.id == 338731263697616897 ){
+    //     var channel = guild.channels.cache.get('758000180900397174')
+    //     sendMessage(channel, deletedEmbed, -1);
+    //     message.delete();
+    //     sendMessage(message.channel, `Do not post private information here.`, 5 )
+    // }
 
-    if (message.content.toLowerCase().includes('horny')){
-        message.react('<a:bogBonk:837945387234492436>')
-    }
+    // if (message.content.toLowerCase().includes('horny')){
+    //     message.react('<a:bogBonk:837945387234492436>')
+    // }
 
     
 
