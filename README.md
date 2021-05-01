@@ -1,1 +1,2 @@
-"# BigBully" 
+Personal project discord bot 
+
