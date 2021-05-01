@@ -53,10 +53,9 @@ module.exports = {
         .setDescription(`${description}`)
         .addField('Online players', `${playersList}`)
         .setThumbnail(`https://cdn.discordapp.com/emojis/587505418406723584.gif?v=1`)
-        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL())
-
+        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL())       
         
-     if (error === null){    message.channel.send(mcServer) }
+     if (error === null){message.channel.send(mcServer) }
 
     // message.channel.send(`Server is currently ${serverOn}. ${currentPlayers} playing out of ${maxPlayers}.`)
     
