@@ -4,7 +4,7 @@ const config = require ('./config.json')
 const command = require('./command')
 const sendMessage = require ('./send-message')
 const { prefix } = require ('./config.json')
-
+const mongo = require('./mongo')
 const path = require('path')
 const fs = require('fs')
 
@@ -30,6 +30,8 @@ client.on('ready', async ()=>{
             }
         }
         readCommands('commands')
+
+        
     
 
 
@@ -40,6 +42,15 @@ client.on('ready', async ()=>{
         },
     })
     
+    await mongo().then(mongoose =>{
+        try {
+            console.log('Connected to mongo!')
+        } catch(e){
+
+        } finally {
+            mongoose.connection.close()
+        }
+    })
    
     command(client, 'servers', message =>{
         if (message.author.id != 301773357072908290){

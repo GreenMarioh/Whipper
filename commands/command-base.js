@@ -1,4 +1,3 @@
-
 const { prefix } = require('../config.json')
 
 const validatePermissions = (permissions) => {
@@ -131,5 +130,3 @@ module.exports = (client, commandOptions) => {
     }
   })
 }
-
-   

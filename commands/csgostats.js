@@ -20,39 +20,39 @@ module.exports = {
 .then(res => res.json())
 .then(data => {
     if (data.data == undefined){message.channel.send('**Error:** Make sure your Steam profile is public and/or you have entered correct ID')}
-    else {
+        else {
     
-        var result = data.data.segments[0].stats
-        var kills = result.kills.displayValue
-        var deaths = result.deaths.displayValue
-        var kd = result.kd.displayValue
-        var damage = result.damage.displayValue
-        var hsp = result.headshotPct.displayValue
-        var matchesPlayed = result.matchesPlayed.displayValue;
-        var wins = result.wins.displayValue;
-        var name = data.data.platformInfo.platformUserHandle;
-        var av = data.data.platformInfo.avatarUrl
-        
-        const csgoEmbed = new Discord.MessageEmbed()
-        .setTitle(`CS:GO stats for ${name}`)
-        .setColor('#ffec38')
-        .setImage(av)
-        .setThumbnail('https://greenmario.hep.gg/N_l0n4A5I.png')
-        .addField('Kills', kills, true)
-        .addField('Deaths', deaths, true)
-        .addField('Damage Done', damage, true)
-        .addField('K/D', kd, true)
-        .addField('Hedshots percentage', hsp, true)
-        
-        .addField('Matches Played', matchesPlayed, true)
-        .addField('Matches Won', wins, true)
-        .setFooter(`Made by GreenMario#0001, API provided by tracker.gg`, message.author.displayAvatarURL())
+            var result = data.data.segments[0].stats
+            var kills = result.kills.displayValue
+            var deaths = result.deaths.displayValue
+            var kd = result.kd.displayValue
+            var damage = result.damage.displayValue
+            var hsp = result.headshotPct.displayValue
+            var matchesPlayed = result.matchesPlayed.displayValue;
+            var wins = result.wins.displayValue;
+            var name = data.data.platformInfo.platformUserHandle;
+            var av = data.data.platformInfo.avatarUrl
+            
+            const csgoEmbed = new Discord.MessageEmbed()
+            .setTitle(`CS:GO stats for ${name}`)
+            .setColor('#ffec38')
+            .setImage(av)
+            .setThumbnail('https://greenmario.hep.gg/N_l0n4A5I.png')
+            .addField('Kills', kills, true)
+            .addField('Deaths', deaths, true)
+            .addField('Damage Done', damage, true)
+            .addField('K/D', kd, true)
+            .addField('Hedshots percentage', hsp, true)
+            
+            .addField('Matches Played', matchesPlayed, true)
+            .addField('Matches Won', wins, true)
+            .setFooter(`Made by GreenMario#0001, API provided by tracker.gg`, message.author.displayAvatarURL())
 
-        message.channel.send(csgoEmbed)
-        // console.log(data.data.platformInfo.platformUserHandle)
-        // console.log(data.data.segments[0].stats)
-}
-}
+            message.channel.send(csgoEmbed)
+            // console.log(data.data.platformInfo.platformUserHandle)
+            // console.log(data.data.segments[0].stats)
+        }
+    }
 )
   .catch(console.error)
 },
