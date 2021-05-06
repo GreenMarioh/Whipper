@@ -42,15 +42,15 @@ client.on('ready', async ()=>{
         },
     })
     
-    await mongo().then(mongoose =>{
-        try {
-            console.log('Connected to mongo!')
-        } catch(e){
+    // await mongo().then(mongoose =>{
+    //     try {
+    //         console.log('Connected to mongo!')
+    //     } catch(e){
 
-        } finally {
-            mongoose.connection.close()
-        }
-    })
+    //     } finally {
+    //         mongoose.connection.close()
+    //     }
+    // })
    
     command(client, 'servers', message =>{
         if (message.author.id != 301773357072908290){
