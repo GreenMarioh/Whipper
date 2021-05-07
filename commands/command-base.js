@@ -1,4 +1,4 @@
-const { prefix } = require('../config.json')
+const { prefix } = require('../config.json');
 
 const validatePermissions = (permissions) => {
   const validPermissions = [
@@ -33,100 +33,107 @@ const validatePermissions = (permissions) => {
     'MANAGE_ROLES',
     'MANAGE_WEBHOOKS',
     'MANAGE_EMOJIS',
-  ]
+  ];
 
   for (const permission of permissions) {
     if (!validPermissions.includes(permission)) {
-      throw new Error(`Unknown permission node "${permission}"`)
+      throw new Error(`Unknown permission node "${permission}"`);
     }
   }
-}
+};
 
-module.exports = (client, commandOptions) => {
-  let {
-    commands,
-    expectedArgs = '',
-    permissionError = 'You do not have permission to run this command.',
-    minArgs = 0,
-    maxArgs = null,
-    permissions = [],
-    requiredRoles = [],
-    callback,
-  } = commandOptions
+const allCommands = {}
+
+module.exports = (commandOptions) => {
+  let { 
+    commands, 
+    permissions = [] 
+  } = commandOptions;
 
   // Ensure the command and aliases are in an array
   if (typeof commands === 'string') {
-    commands = [commands]
+    commands = [commands];
   }
 
-  console.log(`Registering command "${commands[0]}"`)
+  console.log(`Registering command "${commands[0]}"`);
 
   // Ensure the permissions are in an array and are all valid
   if (permissions.length) {
     if (typeof permissions === 'string') {
-      permissions = [permissions]
+      permissions = [permissions];
     }
 
-    validatePermissions(permissions)
+    validatePermissions(permissions);
   }
 
+  for (const command of commands) {
+    allCommands[command] = {
+      ...commandOptions,
+      commands,
+      permissions,
+    };
+  }
+};
+
+module.exports.listen = (client) => {
   // Listen for messages
   client.on('message', (message) => {
-    const { member, content, guild } = message
+    const { member, content, guild } = message;
 
-    for (const alias of commands) {
-      const command = `${prefix}${alias.toLowerCase()}`
+    // Split on any number of spaces
+    const arguments = content.split(/[ ]+/);
 
-      if (
-        content.toLowerCase().startsWith(`${command} `) ||
-        content.toLowerCase() === command
-      ) {
-        // A command has been ran
+    // Remove the command which is the first index
+    const name = arguments.shift().toLowerCase();
 
-        // Ensure the user has the required permissions
-        for (const permission of permissions) {
-          if (!member.hasPermission(permission)) {
-            message.reply(permissionError)
-            return
-          }
-        }
 
-        // Ensure the user has the required roles
-        for (const requiredRole of requiredRoles) {
-          const role = guild.roles.cache.find(
-            (role) => role.name === requiredRole
-          )
+    if (name.startsWith(prefix)) {
+      const command = allCommands[name.replace(prefix, '')];
+      if (!command) {
+        return;
+      }
 
-          if (!role || !member.roles.cache.has(role.id)) {
-            message.reply(
-              `You must have the "${requiredRole}" role to use this command.`
-            )
-            return
-          }
-        }
+    const {
+      permissions,
+      permissionError = '',
+      requiredRoles = [],
+      minArgs = 0,
+      maxArgs = null,
+      expectedArgs,
+      callback,
+    } = command;
 
-        // Split on any number of spaces
-        const arguments = content.split(/[ ]+/)
-
-        // Remove the command which is the first index
-        arguments.shift()
-
-        // Ensure we have the correct number of arguments
-        if (
-          arguments.length < minArgs ||
-          (maxArgs !== null && arguments.length > maxArgs)
-        ) {
-          message.reply(
-            `Incorrect syntax! Use ${prefix}${alias} ${expectedArgs}`
-          )
-          return
-        }
-
-        // Handle the custom command code
-        callback(message, arguments, arguments.join(' '), client)
-
-        return
+    // Ensure the user has the required permissions
+    for (const permission of permissions) {
+      if (!member.hasPermission(permission)) {
+        message.reply(permissionError);
+        return;
       }
     }
-  })
-}
+
+    // Ensure the user has the required roles
+    for (const requiredRole of requiredRoles) {
+      const role = guild.roles.cache.find((role) => role.name === requiredRole);
+
+      if (!role || !member.roles.cache.has(role.id)) {
+        message.reply(
+          `You must have the "${requiredRole}" role to use this command.`
+        );
+        return;
+      }
+    }
+
+    // Ensure we have the correct number of arguments
+    if (
+      arguments.length < minArgs ||
+      (maxArgs !== null && arguments.length > maxArgs)
+    ) {
+      message.reply(`Incorrect syntax! Use ${name} ${expectedArgs}`);
+      return;
+    }
+
+    // Handle the custom command code
+    callback(message, arguments, arguments.join(' '), client);
+    }
+  });
+};
