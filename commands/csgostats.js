@@ -19,7 +19,13 @@ module.exports = {
         })
 .then(res => res.json())
 .then(data => {
-    if (data.data == undefined){message.channel.send('**Error:** Make sure your Steam profile is public and/or you have entered correct ID')}
+    if (data.data == undefined){
+        var errorEmbed = new Discord.MessageEmbed()
+        .setTitle('Error')
+        .setDescription(`<@${message.author.id}> Make sure your Steam profile is public, have game stats set to public and/or you have entered correct ID`)
+        .setImage('https://greenmario.hep.gg/QHU0ePrGK.png')
+        
+        message.channel.send(errorEmbed)}
         else {
     
             var result = data.data.segments[0].stats
