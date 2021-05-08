@@ -49,10 +49,10 @@ module.exports = {
     const mcServer = new Discord.MessageEmbed()
         .setColor('#55FF55')
         .setTitle(`Minecraft server info for ${url}`)
-        .setAuthor(`Server is currently ${serverOn}. ${currentPlayers} playing out of ${maxPlayers}.`)
+        .setAuthor(`${currentPlayers} playing out of ${maxPlayers}.`)
         .setDescription(`${description}`)
         .addField('Online players', `${playersList}`)
-        .setThumbnail(`https://cdn.discordapp.com/emojis/587505418406723584.gif?v=1`)
+        .setThumbnail(`${data.favicon}`)
         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL())       
         
      if (error === null){message.channel.send(mcServer) }

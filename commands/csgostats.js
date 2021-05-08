@@ -52,7 +52,7 @@ module.exports = {
             
             .addField('Matches Played', matchesPlayed, true)
             .addField('Matches Won', wins, true)
-            .setFooter(`Made by GreenMario#0001, API provided by tracker.gg`, message.author.displayAvatarURL())
+            .setFooter(`Made by GreenMario#0001`, message.author.displayAvatarURL())
 
             message.channel.send(csgoEmbed)
             // console.log(data.data.platformInfo.platformUserHandle)
