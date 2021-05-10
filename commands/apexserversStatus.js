@@ -70,7 +70,7 @@ module.exports = {
             message.author.displayAvatarURL()
           )
           .setColor("#f36a12");
-        message.channel.send(OriginEmbed);
+        // message.channel.send(OriginEmbed);
 
         const NovaEmbed = new Discord.MessageEmbed()
           .setTitle("EA Novafusion")
@@ -89,7 +89,7 @@ module.exports = {
             message.author.displayAvatarURL()
           )
           .setColor("#f36a12");
-        message.channel.send(NovaEmbed);
+        // message.channel.send(NovaEmbed);
 
         const EAAEmbed = new Discord.MessageEmbed()
           .setTitle("EA Accounts")
@@ -108,7 +108,7 @@ module.exports = {
             message.author.displayAvatarURL()
           )
           .setColor("#f36a12");
-        message.channel.send(EAAEmbed);
+        // message.channel.send(EAAEmbed);
 
         const ApexEmbed = new Discord.MessageEmbed()
           .setTitle("Apex Legends Crossplay auth Status")
@@ -127,7 +127,15 @@ module.exports = {
             message.author.displayAvatarURL()
           )
           .setColor("#f36a12");
-        message.channel.send(ApexEmbed);
+        // message.channel.send(ApexEmbed);
+
+        message.channel
+          .createWebhook("Whipper", {
+            avatar: "https://greenmario.hep.gg/pQGsKcbav.png",
+          })
+          .then((w) =>
+            w.send({ embeds: [OriginEmbed, NovaEmbed, EAAEmbed, ApexEmbed] })
+          );
 
         //  console.log(data.Origin_login.Asia)
 
