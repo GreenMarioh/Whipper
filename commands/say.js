@@ -1,3 +1,5 @@
+var { prefix } = require('../config.json')
+
 module.exports = {
     commands: ["say"],
     expectedArgs: "args",
@@ -6,7 +8,8 @@ module.exports = {
     maxArgs: null,
     callback: (message, arguments, text) => {
       message.delete();
-      message.channel.send(arguments)
+      var content = message.content.replace(`${prefix}say`, '')
+      message.channel.send(content)
     },
     requiredRoles: [],
     permissions: ["ADMINISTRATOR"],
