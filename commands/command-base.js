@@ -91,7 +91,7 @@ module.exports.listen = (client) => {
 
       const {
         permissions,
-        permissionError = "",
+        permissionError = "You do not have the permissions",
         requiredRoles = [],
         minArgs = 0,
         maxArgs = null,
