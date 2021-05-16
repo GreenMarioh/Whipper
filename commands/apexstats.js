@@ -24,10 +24,13 @@ module.exports = {
           let avatar = result.avatar;
           let level = result.level;
           let image = data.legends.selected.ImgAssets.banner;
+          let RP = result.rank.rankScore;
 
+         
           const ApexStats = new Discord.MessageEmbed()
             .setTitle(`Apex stats for ${name}`)
             .addField("Rank: ", rank, true)
+            .addField("Rank Points:", RP, true)
             .setThumbnail(rankImg)
             .setImage(image)
             .setColor("#f36a12")
