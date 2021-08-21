@@ -4,7 +4,7 @@ var https = require("https");
 const fetch = require("node-fetch");
 
 module.exports = {
-  commands: ["minecraft2", "mc2"],
+  commands: ["minecraft", "mc"],
   expectedArgs: "[Server IP]:[Port(40660 default, specify value if another port)]",
   permissionerror: "You dont have the perms",
   minArgs: 1,
