@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
   commands: ["minecraft", "mc"],
-  expectedArgs: "[Server IP]:[Port(40660 default, specify value if another port)]",
+  expectedArgs: "[Server IP] [Port]",
   permissionerror: "You dont have the perms",
   minArgs: 1,
   maxArgs: 2,
