@@ -7,6 +7,7 @@ const { prefix } = require("./config.json");
 const mongo = require("./mongo");
 const path = require("path");
 const fs = require("fs");
+const fetch = require("node-fetch");
 
 client.on("ready", async () => {
   console.log("Bot is online!");
@@ -348,6 +349,26 @@ client.on("message", async (message) => {
     }
   }
 
+  fetch(`https://api.mcsrvstat.us/2/greenestmario.aternos.me:40660`)
+      .then((res) => res.json())
+      .then((data) => {
+        var ipAd = data.ip;
+        if (message.content.toLowerCase().includes('Server has started') && message.channel.id == '835052580538810418' && message.author.id == '826346201867354112'){
+          message.channel.send(`IP: \`${ipAd}\``)
+        }
+      })
+      .catch(console.error);
+
+      fetch(`https://api.mcsrvstat.us/2/greenestmario.aternos.me:40660`)
+      .then((res) => res.json())
+      .then((data) => {
+        var ipAd = data.ip;
+        if (message.content.toLowerCase().includes('test') && message.channel.id == '826338678401925123' && message.author.id == '826346201867354112'){
+          message.channel.send(`IP: \`${ipAd}\``)
+        }
+      })
+      .catch(console.error);
+  
   // var phoneReg = /^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/
   // var otherPhoneReg = /(?:^|[^0-9])(1[34578][0-9]{9})(?:$|[^0-9])/
   // var inPh = /(\+?\d[\d -]{8,12}\d)/

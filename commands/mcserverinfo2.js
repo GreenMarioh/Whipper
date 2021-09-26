@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 var https = require("https");
 const fetch = require("node-fetch");
 
+
 module.exports = {
   commands: ["minecraft", "mc"],
   expectedArgs: "[Server IP] [Port]",
@@ -72,6 +73,9 @@ module.exports = {
 
         // if (error === null) {
           message.channel.send(mcServer);
+          
+        
+        
           
         // }
 
