@@ -64,6 +64,10 @@ client.on("ready", async () => {
     message.channel.send("https://tenor.com/view/bunger-gif-20251450");
   });
 
+  command(client, "sandwich", (message) => {
+    message.channel.send("https://www.youtube.com/watch?v=uAReTdFwDRk");
+  });
+
   command(client, "status", (message) => {
     if (message.author.id != 301773357072908290) {
       message.channel.send("Only GreenMario may set the status");
