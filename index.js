@@ -348,7 +348,7 @@ client.on("message", async (message) => {
   }
 
   if (message.activity != null) {
-    if (message.activity.partyID == "spotify:301773357072908290") {
+    if (message.activity.partyID == "spotify:") {
       message.channel.send("Nah fam I don't have spotify Premium");
     }
   }
