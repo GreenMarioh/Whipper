@@ -25,6 +25,7 @@ module.exports = {
           let level = result.level;
           let image = data.legends.selected.ImgAssets.banner;
           let RP = result.rank.rankScore;
+          
 
          
           const ApexStats = new Discord.MessageEmbed()

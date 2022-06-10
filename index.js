@@ -48,6 +48,8 @@ client.on("ready", async () => {
   //     }
   // })
 
+  
+
   command(client, "servers", (message) => {
     if (message.author.id != 301773357072908290) {
       message.channel.send("You ain't the Bot owner fam, won't work for ya");
@@ -274,6 +276,10 @@ client.on("ready", async () => {
 client.on("message", async (message) => {
   var guild = client.guilds.cache.get(message.guild.id);
 
+  if (message.content.includes(`826346201867354112`)){
+    message.channel.send(`My prefix is \`${prefix}\``)
+  }
+
   if (message.content === "<:shut:759123030353510430>") {
     message.channel.send("<:Unshut:830511335078756372>");
   }
@@ -353,25 +359,36 @@ client.on("message", async (message) => {
     }
   }
 
-  fetch(`https://api.mcsrvstat.us/2/greenestmario.aternos.me:40660`)
-      .then((res) => res.json())
-      .then((data) => {
-        var ipAd = data.ip;
-        if (message.content.toLowerCase().includes('Server has started') && message.channel.id == '835052580538810418' && message.author.id == '826346201867354112'){
-          message.channel.send(`IP: \`${ipAd}\``)
-        }
-      })
-      .catch(console.error);
+  // fetch(`https://api.mcsrvstat.us/2/greenestmario.aternos.me:40660`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       var ipAd = data.ip;
+  //       if (message.content.toLowerCase().includes('Server has started') && message.channel.id == '835052580538810418' && message.author.id == '826346201867354112'){
+  //         message.channel.send(`IP: \`${ipAd}\``)
+  //       }
+  //     })
+  //     .catch(console.error);
 
-      fetch(`https://api.mcsrvstat.us/2/greenestmario.aternos.me:40660`)
-      .then((res) => res.json())
-      .then((data) => {
-        var ipAd = data.ip;
-        if (message.content.toLowerCase().includes('test') && message.channel.id == '826338678401925123' && message.author.id == '826346201867354112'){
-          message.channel.send(`IP: \`${ipAd}\``)
-        }
-      })
-      .catch(console.error);
+  //     fetch(`https://api.mcsrvstat.us/2/greenestmario.aternos.me:40660`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       var ipAd = data.ip;
+  //       if (message.content.toLowerCase().includes('test') && message.channel.id == '826338678401925123' && message.author.id == '826346201867354112'){
+  //         message.channel.send(`IP: \`${ipAd}\``)
+  //       }
+  //     })
+  //     .catch(console.error);
+
+
+      // if (message.channel == '707188780733562890' && message.author.id != '826346201867354112'){
+      //   console.log(message)
+      //   if (message.embeds == null && message.embeds[0].title != undefined){
+      //   console.log(message.embeds[0].description)
+        
+      //   message.channel.send(`${message.embeds[0].description} ${message.embeds[0].title}`)}
+      
+        
+      // }
   
   // var phoneReg = /^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/
   // var otherPhoneReg = /(?:^|[^0-9])(1[34578][0-9]{9})(?:$|[^0-9])/
